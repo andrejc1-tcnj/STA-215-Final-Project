@@ -1,0 +1,65 @@
+## Project:  STA 145, Fall 2025, Final Project
+# Located:   RStudio Server
+# File Name: andrejc1-final_project.R
+# Date:      11/24/2025
+# Who:       Colin Andrejco
+
+## Load packages
+# NOTE: Run base.R if these commands return an error!
+library(readr)
+library(dplyr)
+library(tidytext)
+library(tidyverse)
+library(ggplot2)
+library(haven)
+library(forcats)
+library(psych)
+
+# Load data 
+library(readr)
+dataset <- read_csv(Music2)
+View(Music2)
+
+##################################################################################
+############### Table 1: descriptive statistics    ####################   
+##################################################################################
+table(Music2$chart_duration)
+mean(Music2$chart_duration)
+sd(Music2$chart_duration)
+
+table(Music2$listens)
+mean(Music2$listens)
+sd(Music2$listens)
+
+##################################################################################
+####################   Figure 2: scatter plot             ####################   
+##################################################################################
+linear_plot <- plot(Music2$listens, Music2$chart_duration)
+print(linear_plot)
+meany <- mean(Music2$listens)
+meanx <- mean(Music2$chart_duration)
+abline(h = meanx, col = "black")
+abline(v = meany, col = "black")
+linear_relationship <- lm(chart_duration ~ Music2$listens, data = Music2)
+summary(linear_relationship)
+abline(linear_relationship, col = "red")
+
+linear_plot <- plot(Music2$listens, Music2$chart_duration)
+print(linear_plot)
+meany <- mean(Music2$listens)
+meanx <- mean(Music2$chart_duration)
+abline(h = meanx, col = "black")
+abline(v = meany, col = "black")
+linear_relationship <- lm(chart_duration ~ listens, data = Music2_nooutlier)
+summary(linear_relationship)
+abline(linear_relationship, col = "red")
+
+##################################################################################
+####################  Figure 3: residual plot                ####################   
+##################################################################################
+# Plot the residuals
+plot(Music2$listens, residuals(Music2$chart_duration))
+plot(dataset_withoutlistensoutlier$number_of_listens, residuals(linear_relationship))
+
+# Add a horizontal line at zero to indicate the baseline
+abline(h = 0, col = "red")
