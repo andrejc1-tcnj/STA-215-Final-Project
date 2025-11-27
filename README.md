@@ -6,7 +6,7 @@ My package contains the amount of plays that songs on the top 100 billboard had 
 To view and properly run the script, open the "andrejc1-final_project.R" file which has the code for my project. To access the dataset, open the Music2 (1).xlsx file and you can view both the Data Table Tabular and the Descriptive Table.
 
 # Data
-All points of data in this project were taken from the week of September 7th 2025 Billboard.com/charts/hot-100/. 
+All points of data in this project were taken from the week of September 7th 2025 Billboard.com/charts/hot-100/, each respective song's wikipedia page, and each song's respective spotify page.
 
 # Operationalization
 To perationalize the listens, I went onto Spotify and copied the number from there into a Google Sheets file.
